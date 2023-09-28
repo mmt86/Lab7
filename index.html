@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- 
+
 <!-- This is to indicate we have an HTML document -->
 <!DOCTYPE html>
 
@@ -54,6 +54,24 @@ const map = new mapboxgl.Map({
   center: [-73.935242, 40.730610],
   zoom: 12,
   minZoom: 12
+});
+map.on('load',function(){
+  // Give your layer's source a nickname you'll remember easily. I've called my source `sandy_layer`.
+  map.addSource('sandy_layer',{
+    'type':'vector',
+    'url': 'mapbox://mmt86.3fr4wvl3'
+  });
+  // add a new layer with your polygons
+  map.addLayer({
+    'id':'flood_zones',
+    'type':'fill',
+    'source':'sandy_layer',
+    'source':'Sandy_Inundation_Zone-3x27xp',
+    'paint':{
+      'fill-color':'#00158f',
+      'fill-opacity': 0.5
+    }
+  })
 });
 </script>
 
