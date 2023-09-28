@@ -61,14 +61,28 @@ map.on('load',function(){
     'type':'vector',
     'url': 'mapbox://mmt86.3fr4wvl3'
   });
+  map.addSource('nyc_layer',{
+    'type':'vector',
+    'url': 'mapbox://mmt86.1idxzcl4'
+  });
   // add a new layer with your polygons
   map.addLayer({
     'id':'flood_zones',
     'type':'fill',
     'source':'sandy_layer',
-    'source':'Sandy_Inundation_Zone-3x27xp',
+    'source-layer':'Sandy_Inundation_Zone-3x27xp',
     'paint':{
       'fill-color':'#00158f',
+      'fill-opacity': 0.5
+    }
+  })
+  map.addLayer({
+    'id':'housing_zones',
+    'type':'fill',
+    'source':'nyc_layer',
+    'source-layer':'Map_of_NYCHA_Developments-6x4iwl',
+    'paint':{
+      'fill-color':'#FF0000',
       'fill-opacity': 0.5
     }
   })
